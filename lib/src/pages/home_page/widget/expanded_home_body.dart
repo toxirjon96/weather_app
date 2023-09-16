@@ -14,68 +14,17 @@ class ExpandedHomeBody extends StatelessWidget {
         ),
         const Expanded(
           flex: 3,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Text(
-                "Toshkent, Uzbekistan",
-                style: TextStyle(
-                  color: Color(0xFF303345),
-                  fontSize: 40,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Text(
-                "Tue, Sept 15",
-                style: TextStyle(
-                  color: Color(0xFF9A938C),
-                  fontSize: 20,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-            ],
-          ),
+          child: LocationInfo(),
         ),
         Expanded(
           flex: 4,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Image.asset(
-                "assets/images/rainy/rainy_4.png",
-                height: 400,
-              ),
-              const Row(
-                children: [
-                  Column(
-                    children: [
-                      Text(
-                        "19",
-                        style: TextStyle(
-                          color: Color(0xFF303345),
-                          fontSize: 100,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Text(
-                        "Rainy",
-                        style: TextStyle(
-                          color: Color(0xFF303345),
-                          fontSize: 24,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      )
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Text("° C"),
-                    ],
-                  ),
-                ],
-              ),
-            ],
+          child: TodayInfo(
+            image: Image.asset(
+              "assets/images/rainy/rainy_4.png",
+              height: 400,
+            ),
+            celsiusValue: "19",
+            weather: "Rainy",
           ),
         ),
         const Expanded(
