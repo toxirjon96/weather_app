@@ -58,7 +58,7 @@ class SliderItem extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(40),
-        color: Colors.white,
+        color: const Color(0xFFFBD2B0),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
