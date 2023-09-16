@@ -13,7 +13,7 @@ class ExpandedHomeBody extends StatelessWidget {
           child: HomeAppBar(),
         ),
         const Expanded(
-          flex: 4,
+          flex: 3,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -78,11 +78,9 @@ class ExpandedHomeBody extends StatelessWidget {
             ],
           ),
         ),
-        Expanded(
+        const Expanded(
           flex: 6,
-          child: Container(
-            color: Colors.yellow,
-          ),
+          child: WeatherInfo(),
         ),
         Expanded(
           child: Container(
