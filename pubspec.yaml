@@ -26,7 +26,6 @@ flutter:
 
   assets:
     - assets/images/
-    - assets/images/rainy/
 
   fonts:
     - family: Inter

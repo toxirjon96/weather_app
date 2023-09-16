@@ -20,7 +20,7 @@ class ExpandedHomeBody extends StatelessWidget {
           flex: 4,
           child: TodayInfo(
             image: Image.asset(
-              "assets/images/rainy/rainy_4.png",
+              "assets/images/rainy_with_sun.png",
               height: 400,
             ),
             celsiusValue: "19",
@@ -31,10 +31,8 @@ class ExpandedHomeBody extends StatelessWidget {
           flex: 6,
           child: WeatherInfo(),
         ),
-        Expanded(
-          child: Container(
-            color: Colors.green,
-          ),
+        const Expanded(
+          child: WeatherDays(),
         ),
         Expanded(
           flex: 3,
