@@ -1,19 +1,22 @@
 import 'package:weather_app/weather_app_library.dart';
 
 class WeatherSlider extends StatelessWidget {
-  const WeatherSlider({super.key});
+  WeatherSlider({super.key});
+  final controller = ScrollController();
 
   @override
   Widget build(BuildContext context) {
-    return const RawScrollbar(
+    return RawScrollbar(
       scrollbarOrientation: ScrollbarOrientation.top,
+      controller: controller,
       thumbVisibility: true,
       thickness: 4,
       thumbColor: Colors.black,
-      radius: Radius.circular(10),
+      radius: const Radius.circular(10),
       child: SingleChildScrollView(
+        controller: controller,
         scrollDirection: Axis.horizontal,
-        child: Row(
+        child: const Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             SliderItem(),

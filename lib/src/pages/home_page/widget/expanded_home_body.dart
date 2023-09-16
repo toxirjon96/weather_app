@@ -1,4 +1,3 @@
-import 'package:weather_app/src/pages/home_page/widget/home_appbar.dart';
 import 'package:weather_app/weather_app_library.dart';
 
 class ExpandedHomeBody extends StatelessWidget {
@@ -37,7 +36,7 @@ class ExpandedHomeBody extends StatelessWidget {
         Divider(
           color: Colors.black.withOpacity(0.5),
         ),
-        const Expanded(
+        Expanded(
           flex: 3,
           child: WeatherSlider(),
         ),
