@@ -34,6 +34,9 @@ class ExpandedHomeBody extends StatelessWidget {
         const Expanded(
           child: WeatherDays(),
         ),
+        Divider(
+          color: Colors.black.withOpacity(0.5),
+        ),
         const Expanded(
           flex: 3,
           child: WeatherSlider(),
