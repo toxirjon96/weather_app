@@ -37,7 +37,14 @@ class _WeatherDaysState extends State<WeatherDays> {
         ),
         const Spacer(),
         TextButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const NextDaysPage(),
+              ),
+            );
+          },
           child: Text(
             "Next 7 Days",
             style: TextStyle(
