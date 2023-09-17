@@ -12,8 +12,18 @@ class ExpandedNextPageBody extends StatelessWidget {
         ),
         Expanded(
           flex: 10,
-          child: Container(
-            color: Colors.red,
+          child: Column(
+            children: [
+              const Expanded(
+                child: TopContainer(),
+              ),
+              Expanded(
+                flex: 2,
+                child: Container(
+                  color: Colors.red,
+                ),
+              ),
+            ],
           ),
         ),
       ],

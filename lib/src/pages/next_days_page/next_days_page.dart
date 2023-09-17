@@ -15,7 +15,7 @@ class NextDaysPage extends StatelessWidget{
               end: Alignment.topLeft,
               colors: [
                 Color(0xFFFF7E36),
-                Color(0xFFFFFFFF),
+                Color(0xFFFBDBBF),
               ],
             ),
           ),

@@ -15,4 +15,5 @@ export 'package:weather_app/src/pages/home_page/widget/home_appbar.dart';
 //next_seven_days_page
 export 'package:weather_app/src/pages/next_days_page/widget/expanded_next_page_body.dart';
 export 'package:weather_app/src/pages/next_days_page/widget/next_page_appbar.dart';
+export 'package:weather_app/src/pages/next_days_page/widget/top_container.dart';
 export 'package:weather_app/src/pages/next_days_page/next_days_page.dart';
