@@ -42,7 +42,12 @@ class TodayInfo extends StatelessWidget {
             ),
             const Column(
               children: [
-                Text("° C"),
+                Text(
+                  "° C",
+                  style: TextStyle(
+                    fontSize: 18,
+                  ),
+                ),
               ],
             ),
           ],
