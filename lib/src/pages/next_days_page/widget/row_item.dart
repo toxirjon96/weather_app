@@ -21,7 +21,7 @@ class RowItem extends StatelessWidget {
           dayName,
           style: const TextStyle(
             fontWeight: FontWeight.w600,
-            fontSize: 20,
+            fontSize: 18,
           ),
         ),
         Row(
@@ -30,7 +30,7 @@ class RowItem extends StatelessWidget {
               celsius,
               style: const TextStyle(
                 fontWeight: FontWeight.w600,
-                fontSize: 20,
+                fontSize: 18,
               ),
             ),
             image,
