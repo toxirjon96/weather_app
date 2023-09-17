@@ -1,8 +1,23 @@
+import 'package:intl/intl.dart';
 import 'package:weather_app/weather_app_library.dart';
 
 class WeatherSlider extends StatelessWidget {
-  WeatherSlider({super.key});
+  WeatherSlider({
+    super.key,
+    required this.weather,
+  });
+
+  final Weather weather;
+
   final controller = ScrollController();
+
+  bool isEqualTime(int timeEpoch) {
+    DateTime now = DateTime.now();
+    DateTime value = DateTime.fromMillisecondsSinceEpoch(timeEpoch * 1000);
+    print("${DateFormat.H().format(now)} --- ${DateFormat.H().format(value)} ${now}");
+    return DateFormat.H().format(now).trim() ==
+        DateFormat.H().format(value).trim();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -16,28 +31,27 @@ class WeatherSlider extends StatelessWidget {
       child: SingleChildScrollView(
         controller: controller,
         scrollDirection: Axis.horizontal,
-        child: const Row(
+        child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            SliderItem(),
-            SliderItem(),
-            SliderItem(),
-            SliderItem(),
-            SliderItem(),
-            SliderItem(),
-            SliderItem(),
-            SliderItem(),
-            SliderItem(),
-            SliderItem(),
-            SliderItem(),
-            SliderItem(),
-            SliderItem(),
-            SliderItem(),
-            SliderItem(),
-            SliderItem(),
-            SliderItem(),
-            SliderItem(),
-            SliderItem(),
+            ...weather.days[0].hours.map(
+              (e) {
+                print(e.datetimeEpoch);
+                if (!isEqualTime(e.datetimeEpoch!)) {
+                  return SliderItem(
+                    time: weather.dateTimeFormat(
+                        DateFormat.Hm(), e.datetimeEpoch),
+                    celsius: weather.celsiusValue(e.temp!),
+                  );
+                } else {
+                  return SliderItem(
+                    time: "now",
+                    celsius: weather.celsiusValue(e.temp!),
+                    color: const Color(0xFFFFEAD9),
+                  );
+                }
+              },
+            ).toList(),
           ],
         ),
       ),
@@ -46,7 +60,16 @@ class WeatherSlider extends StatelessWidget {
 }
 
 class SliderItem extends StatelessWidget {
-  const SliderItem({super.key});
+  const SliderItem({
+    super.key,
+    required this.time,
+    required this.celsius,
+    this.color = const Color(0xFFFECFA9),
+  });
+
+  final Color color;
+  final String time;
+  final String celsius;
 
   @override
   Widget build(BuildContext context) {
@@ -58,18 +81,18 @@ class SliderItem extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(40),
-        color: const Color(0xFFFBD2B0),
+        color: color,
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text("now"),
+          Text(time),
           Image.asset(
             "assets/images/sunny.png",
             width: 60,
             fit: BoxFit.cover,
           ),
-          const Text("19°"),
+          Text("${celsius}°"),
         ],
       ),
     );

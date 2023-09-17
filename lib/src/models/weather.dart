@@ -1,27 +1,40 @@
+import 'package:intl/intl.dart';
 import 'package:weather_app/weather_app_library.dart';
 
 class Weather {
   int? queryCost;
   double? latitude;
   double? longitude;
-  String? resolvedaddress;
+  String? resolvedAddress;
   String? address;
   String? timezone;
   double? tzoffset;
   String? description;
   List<Day> days;
+  CurrentConditions currentConditions;
 
   Weather({
     required this.queryCost,
     required this.latitude,
     required this.longitude,
-    required this.resolvedaddress,
+    required this.resolvedAddress,
     required this.address,
     required this.timezone,
     required this.tzoffset,
     required this.description,
     required this.days,
+    required this.currentConditions,
   });
+
+  String celsiusValue(double temp) {
+    return ((temp - 32) * 5 / 9).truncate().toString();
+  }
+
+  String dateTimeFormat(DateFormat format, dateTimeEpoch) {
+    return format.format(
+      DateTime.fromMillisecondsSinceEpoch(dateTimeEpoch * 1000),
+    );
+  }
 
   static Weather Function(Map<String, Object?> json) convert() =>
       (Map<String, Object?> json) {
@@ -33,7 +46,7 @@ class Weather {
       queryCost: json["queryCost"] as int?,
       latitude: json["latitude"] as double?,
       longitude: json["longitude"] as double?,
-      resolvedaddress: json["resolvedaddress"] as String?,
+      resolvedAddress: json["resolvedAddress"] as String?,
       address: json["address"] as String?,
       timezone: json["timezone"] as String?,
       tzoffset: json["tzoffset"] as double?,
@@ -45,6 +58,9 @@ class Weather {
           throw const HttpRequestException("Request exception.");
         }
       }).toList(),
+      currentConditions: CurrentConditions.fromJson(
+        json["currentConditions"] as Map<String, Object?>,
+      ),
     );
   }
 
@@ -56,7 +72,7 @@ class Weather {
           queryCost == other.queryCost &&
           latitude == other.latitude &&
           longitude == other.longitude &&
-          resolvedaddress == other.resolvedaddress &&
+          resolvedAddress == other.resolvedAddress &&
           address == other.address &&
           timezone == other.timezone &&
           tzoffset == other.tzoffset &&
@@ -68,7 +84,7 @@ class Weather {
       queryCost.hashCode ^
       latitude.hashCode ^
       longitude.hashCode ^
-      resolvedaddress.hashCode ^
+      resolvedAddress.hashCode ^
       address.hashCode ^
       timezone.hashCode ^
       tzoffset.hashCode ^
@@ -80,7 +96,7 @@ class Weather {
     return 'Weather(queryCost: $queryCost, '
         'latitude: $latitude, '
         'longitude: $longitude, '
-        'resolvedaddress: $resolvedaddress, '
+        'resolvedaddress: $resolvedAddress, '
         'address: $address, '
         'timezone: $timezone, '
         'tzoffset: $tzoffset, '

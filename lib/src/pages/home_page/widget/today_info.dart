@@ -36,6 +36,7 @@ class TodayInfo extends StatelessWidget {
                     color: Color(0xFF303345),
                     fontSize: 24,
                     fontWeight: FontWeight.w500,
+                    overflow: TextOverflow.ellipsis,
                   ),
                 )
               ],

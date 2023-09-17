@@ -1,7 +1,13 @@
 import 'package:weather_app/weather_app_library.dart';
 
 class ExpandedHomeBody extends StatelessWidget {
-  const ExpandedHomeBody({super.key});
+  final Weather weather;
+
+  const ExpandedHomeBody({
+    super.key,
+    required this.weather,
+  });
+  
 
   @override
   Widget build(BuildContext context) {
@@ -11,9 +17,11 @@ class ExpandedHomeBody extends StatelessWidget {
         const Expanded(
           child: HomeAppBar(),
         ),
-        const Expanded(
+        Expanded(
           flex: 3,
-          child: LocationInfo(),
+          child: LocationInfo(
+            weather: weather,
+          ),
         ),
         Expanded(
           flex: 4,
@@ -22,13 +30,15 @@ class ExpandedHomeBody extends StatelessWidget {
               "assets/images/rainy_with_sun.png",
               height: 400,
             ),
-            celsiusValue: "19",
-            weather: "Rainy",
+            celsiusValue: weather.celsiusValue(weather.currentConditions.temp!),
+            weather: weather.currentConditions.conditions!,
           ),
         ),
-        const Expanded(
+        Expanded(
           flex: 6,
-          child: WeatherInfo(),
+          child: WeatherInfo(
+            weather: weather,
+          ),
         ),
         const Expanded(
           child: WeatherDays(),
@@ -38,7 +48,9 @@ class ExpandedHomeBody extends StatelessWidget {
         ),
         Expanded(
           flex: 3,
-          child: WeatherSlider(),
+          child: WeatherSlider(
+            weather: weather,
+          ),
         ),
       ],
     );

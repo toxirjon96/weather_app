@@ -54,7 +54,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     if (weather != null) {
-      activeScreen = const ExpandedHomeBody();
+      activeScreen = ExpandedHomeBody(weather: weather!);
     } else {
       activeScreen = Loading(stateOfApp: stateOfApp);
     }

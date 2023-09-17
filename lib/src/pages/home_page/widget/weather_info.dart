@@ -1,7 +1,12 @@
 import 'package:weather_app/weather_app_library.dart';
 
 class WeatherInfo extends StatelessWidget {
-  const WeatherInfo({super.key});
+  const WeatherInfo({
+    super.key,
+    required this.weather,
+  });
+
+  final Weather weather;
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +19,7 @@ class WeatherInfo extends StatelessWidget {
             width: 50,
           ),
           infoName: "Rain Fall",
-          infoValue: "3cm",
+          infoValue: "${weather.currentConditions.precipprob!.toInt()}cm",
         ),
         InfoItem(
           image: Image.asset(
@@ -22,7 +27,7 @@ class WeatherInfo extends StatelessWidget {
             width: 50,
           ),
           infoName: "Wind",
-          infoValue: "19km/h",
+          infoValue: "${weather.currentConditions.windspeed}km/h",
         ),
         InfoItem(
           image: Image.asset(
@@ -30,7 +35,7 @@ class WeatherInfo extends StatelessWidget {
             width: 50,
           ),
           infoName: "Humidity",
-          infoValue: "64%",
+          infoValue: "${weather.currentConditions.humidity}%",
         )
       ],
     );

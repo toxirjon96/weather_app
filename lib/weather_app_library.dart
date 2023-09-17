@@ -8,6 +8,7 @@ export 'dart:convert';
 export 'package:weather_app/src/models/day.dart';
 export 'package:weather_app/src/models/hour.dart';
 export 'package:weather_app/src/models/weather.dart';
+export 'package:weather_app/src/models/current_conditions.dart';
 
 //repository
 export 'package:weather_app/src/repository/http_request_repository.dart';
