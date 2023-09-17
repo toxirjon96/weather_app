@@ -7,8 +7,8 @@ class HttpRequestService implements HttpRequestRepository {
     Uri url, {
     Map<String, String>? headers,
   }) async {
-    http.Response response = await http.get(url, headers: headers);
     try {
+      http.Response response = await http.get(url, headers: headers);
       if (response.statusCode == 200) {
         return jsonToMap(response.body);
       } else {
@@ -17,6 +17,8 @@ class HttpRequestService implements HttpRequestRepository {
       }
     } on JsonDecodeException {
       rethrow;
+    } catch (e) {
+      throw const HttpRequestException("Error in making request!");
     }
   }
 
@@ -67,6 +69,7 @@ class HttpRequestService implements HttpRequestRepository {
   @override
   Map<String, Object?> jsonToMap(String requestBody) {
     try {
+      print(jsonDecode(requestBody).runtimeType);
       return jsonDecode(requestBody);
     } catch (e) {
       throw const JsonDecodeException("This is not valid format of json.");

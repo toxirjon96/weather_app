@@ -14,7 +14,7 @@ class Day {
   double? precip;
   double? precipprob;
   double? precipcover;
-  double? preciptype;
+  List<String>? preciptype;
   double? snow;
   double? snowdepth;
   double? windgust;
@@ -27,14 +27,14 @@ class Day {
   double? solarenergy;
   double? uvindex;
   double? severerisk;
-  double? sunrise;
-  double? sunset;
-  double? sunriseEpoch;
+  String? sunrise;
+  String? sunset;
+  int? sunriseEpoch;
   double? moonphase;
   String? conditions;
   String? description;
   String? icon;
-  List<String> stations;
+  List<String>? stations;
   String? source;
   List<Hour> hours;
 
@@ -77,6 +77,11 @@ class Day {
     required this.hours,
   });
 
+  static Day Function(Map<String, Object?> json) convert() =>
+      (Map<String, Object?> json) {
+        return Day.fromJson(json);
+      };
+
   factory Day.fromJson(Map<String, Object?> json) {
     return Day(
       datetime: json["datetime"] as String?,
@@ -92,7 +97,11 @@ class Day {
       precip: json["precip"] as double?,
       precipprob: json["precipprob"] as double?,
       precipcover: json["precipcover"] as double?,
-      preciptype: json["preciptype"] as double?,
+      preciptype: json["preciptype"] == null
+          ? null
+          : (json["preciptype"] as List<Object?>)
+              .map((e) => e as String)
+              .toList(),
       snow: json["snow"] as double?,
       snowdepth: json["snowdepth"] as double?,
       windgust: json["windgust"] as double?,
@@ -105,19 +114,26 @@ class Day {
       solarenergy: json["solarenergy"] as double?,
       uvindex: json["uvindex"] as double?,
       severerisk: json["severerisk"] as double?,
-      sunrise: json["sunrise"] as double?,
-      sunset: json["sunset"] as double?,
-      sunriseEpoch: json["sunriseEpoch"] as double?,
+      sunrise: json["sunrise"] as String?,
+      sunset: json["sunset"] as String?,
+      sunriseEpoch: json["sunriseEpoch"] as int?,
       moonphase: json["moonphase"] as double?,
       conditions: json["conditions"] as String?,
       description: json["description"] as String?,
       icon: json["icon"] as String?,
-      stations:
-          (json["stations"] as List<Object?>).map((e) => e as String).toList(),
+      stations: json["stations"] == null
+          ? null
+          : (json["stations"] as List<Object?>)
+              .map((e) => e as String)
+              .toList(),
       source: json["source"] as String?,
-      hours: (json["hours"] as List<Map<String, Object?>>)
-          .map((e) => Hour.fromJson(e))
-          .toList(),
+      hours: (json["hours"] as List<Object?>).map((e) {
+        if (e is Map<String, Object?>) {
+          return Hour.convert()(e);
+        } else {
+          throw const HttpRequestException("Request exception.");
+        }
+      }).toList(),
     );
   }
 

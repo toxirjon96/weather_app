@@ -12,6 +12,12 @@ export 'package:weather_app/src/models/weather.dart';
 //repository
 export 'package:weather_app/src/repository/http_request_repository.dart';
 
+//service
+export 'package:weather_app/src/service/http_request_service.dart';
+
+//controller
+export 'package:weather_app/src/controller/weather_app_controller.dart';
+
 //exception
 export 'package:weather_app/src/exception/http_request_ecxeption.dart';
 export 'package:weather_app/src/exception/http_statuscode_exception.dart';

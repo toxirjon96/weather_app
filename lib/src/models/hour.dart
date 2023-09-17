@@ -7,9 +7,9 @@ class Hour {
   double? dew;
   double? precip;
   double? precipprob;
-  int? snow;
-  int? snowdepth;
-  double? preciptype;
+  double? snow;
+  double? snowdepth;
+  List<String>? preciptype;
   double? windgust;
   double? windspeed;
   double? winddir;
@@ -18,8 +18,8 @@ class Hour {
   double? cloudcover;
   double? solarradiation;
   double? solarenergy;
-  int? uvindex;
-  int? severerisk;
+  double? uvindex;
+  double? severerisk;
   String? conditions;
   String? icon;
   List<String>? stations;
@@ -53,7 +53,13 @@ class Hour {
     required this.source,
   });
 
+  static Hour Function(Map<String, Object?> json) convert() =>
+      (Map<String, Object?> json) {
+        return Hour.fromJson(json);
+      };
+
   factory Hour.fromJson(Map<String, Object?> json) {
+
     return Hour(
       datetime: json["datetime"] as String?,
       datetimeEpoch: json["datetimeEpoch"] as int?,
@@ -63,9 +69,13 @@ class Hour {
       dew: json["dew"] as double?,
       precip: json["precip"] as double?,
       precipprob: json["precipprob"] as double?,
-      snow: json["snow"] as int?,
-      snowdepth: json["snowdepth"] as int?,
-      preciptype: json["preciptype"] as double?,
+      snow: json["snow"] as double?,
+      snowdepth: json["snowdepth"] as double?,
+      preciptype: json["preciptype"] == null
+          ? null
+          : (json["preciptype"] as List<Object?>)
+          .map((e) => e as String)
+          .toList(),
       windgust: json["windgust"] as double?,
       windspeed: json["windspeed"] as double?,
       winddir: json["winddir"] as double?,
@@ -74,11 +84,12 @@ class Hour {
       cloudcover: json["cloudcover"] as double?,
       solarradiation: json["solarradiation"] as double?,
       solarenergy: json["solarenergy"] as double?,
-      uvindex: json["uvindex"] as int?,
-      severerisk: json["severerisk"] as int?,
+      uvindex: json["uvindex"] as double?,
+      severerisk: json["severerisk"] as double?,
       conditions: json["conditions"] as String?,
       icon: json["icon"] as String?,
-      stations: (json["stations"] as List<Object?>).map((e) => e as String).toList(),
+      stations: json["stations"] == null? null:
+          (json["stations"] as List<Object?>).map((e) => e as String).toList(),
       source: json["source"] as String?,
     );
   }

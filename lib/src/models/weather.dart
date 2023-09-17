@@ -23,6 +23,11 @@ class Weather {
     required this.days,
   });
 
+  static Weather Function(Map<String, Object?> json) convert() =>
+      (Map<String, Object?> json) {
+        return Weather.fromJson(json);
+      };
+
   factory Weather.fromJson(Map<String, Object?> json) {
     return Weather(
       queryCost: json["queryCost"] as int?,
@@ -33,9 +38,13 @@ class Weather {
       timezone: json["timezone"] as String?,
       tzoffset: json["tzoffset"] as double?,
       description: json["description"] as String?,
-      days: (json["days"] as List<Map<String, Object?>>)
-          .map((e) => Day.fromJson(e))
-          .toList(),
+      days: (json["days"] as List<Object?>).map((e) {
+        if (e is Map<String, Object?>) {
+          return Day.convert()(e);
+        } else {
+          throw const HttpRequestException("Request exception.");
+        }
+      }).toList(),
     );
   }
 
