@@ -19,6 +19,8 @@ class _NextPageAppBarState extends State<NextPageAppBar> {
           },
           icon: const Icon(
             Icons.arrow_back,
+            color: Colors.black,
+            size: 35,
           ),
         ),
         const Text(
@@ -28,7 +30,9 @@ class _NextPageAppBarState extends State<NextPageAppBar> {
             fontWeight: FontWeight.w500,
           ),
         ),
-        const Spacer(),
+        const SizedBox(
+          width: 20,
+        ),
       ],
     );
   }

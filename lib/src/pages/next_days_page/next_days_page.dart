@@ -19,6 +19,7 @@ class NextDaysPage extends StatelessWidget{
               ],
             ),
           ),
+          child: const ExpandedNextPageBody(),
         ),
       ),
     );

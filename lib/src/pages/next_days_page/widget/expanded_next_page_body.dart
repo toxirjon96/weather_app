@@ -8,7 +8,7 @@ class ExpandedNextPageBody extends StatelessWidget {
     return Column(
       children: [
         const Expanded(
-          child: ExpandedNextPageBody(),
+          child: NextPageAppBar(),
         ),
         Expanded(
           flex: 10,
