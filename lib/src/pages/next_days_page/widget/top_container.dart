@@ -15,33 +15,14 @@ class TopContainer extends StatelessWidget {
       child: Column(
         children: [
           Expanded(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Text(
-                  "Tomorrow",
-                  style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 20,
-                  ),
-                ),
-                Row(
-                  children: [
-                    const Text(
-                      "22 °",
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 20,
-                      ),
-                    ),
-                    Image.asset(
-                      "assets/images/sunny.png",
-                      width: 100,
-                      fit: BoxFit.cover,
-                    ),
-                  ],
-                ),
-              ],
+            child: RowItem(
+              dayName: "Tomorrow",
+              celsius: "22 °",
+              image: Image.asset(
+                "assets/images/sunny.png",
+                width: 100,
+                fit: BoxFit.cover,
+              ),
             ),
           ),
           Expanded(
