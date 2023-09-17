@@ -9,7 +9,7 @@ class Hour {
   double? precipprob;
   int? snow;
   int? snowdepth;
-  List<String>? preciptype;
+  double? preciptype;
   double? windgust;
   double? windspeed;
   double? winddir;
@@ -53,6 +53,35 @@ class Hour {
     required this.source,
   });
 
+  factory Hour.fromJson(Map<String, Object?> json) {
+    return Hour(
+      datetime: json["datetime"] as String?,
+      datetimeEpoch: json["datetimeEpoch"] as int?,
+      temp: json["temp"] as double?,
+      feelslike: json["feelslike"] as double?,
+      humidity: json["humidity"] as double?,
+      dew: json["dew"] as double?,
+      precip: json["precip"] as double?,
+      precipprob: json["precipprob"] as double?,
+      snow: json["snow"] as int?,
+      snowdepth: json["snowdepth"] as int?,
+      preciptype: json["preciptype"] as double?,
+      windgust: json["windgust"] as double?,
+      windspeed: json["windspeed"] as double?,
+      winddir: json["winddir"] as double?,
+      pressure: json["pressure"] as double?,
+      visibility: json["visibility"] as double?,
+      cloudcover: json["cloudcover"] as double?,
+      solarradiation: json["solarradiation"] as double?,
+      solarenergy: json["solarenergy"] as double?,
+      uvindex: json["uvindex"] as int?,
+      severerisk: json["severerisk"] as int?,
+      conditions: json["conditions"] as String?,
+      icon: json["icon"] as String?,
+      stations: (json["stations"] as List<Object?>).map((e) => e as String).toList(),
+      source: json["source"] as String?,
+    );
+  }
 
   @override
   bool operator ==(Object other) =>

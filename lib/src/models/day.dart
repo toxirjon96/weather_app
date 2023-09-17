@@ -1,6 +1,6 @@
 import 'package:weather_app/weather_app_library.dart';
 
-class Days {
+class Day {
   String? datetime;
   int? datetimeepoch;
   double? tempmax;
@@ -36,9 +36,9 @@ class Days {
   String? icon;
   List<String> stations;
   String? source;
-  List<Hour>? hours;
+  List<Hour> hours;
 
-  Days({
+  Day({
     required this.datetime,
     required this.datetimeepoch,
     required this.tempmax,
@@ -77,11 +77,54 @@ class Days {
     required this.hours,
   });
 
+  factory Day.fromJson(Map<String, Object?> json) {
+    return Day(
+      datetime: json["datetime"] as String?,
+      datetimeepoch: json["datetimeepoch"] as int?,
+      tempmax: json["tempmax"] as double?,
+      tempmin: json["tempmin"] as double?,
+      temp: json["temp"] as double?,
+      feelslikemax: json["feelslikemax"] as double?,
+      feelslikemin: json["feelslikemin"] as double?,
+      feelslike: json["feelslike"] as double?,
+      dew: json["dew"] as double?,
+      humidity: json["humidity"] as double?,
+      precip: json["precip"] as double?,
+      precipprob: json["precipprob"] as double?,
+      precipcover: json["precipcover"] as double?,
+      preciptype: json["preciptype"] as double?,
+      snow: json["snow"] as double?,
+      snowdepth: json["snowdepth"] as double?,
+      windgust: json["windgust"] as double?,
+      windspeed: json["windspeed"] as double?,
+      winddir: json["winddir"] as double?,
+      pressure: json["pressure"] as double?,
+      cloudcover: json["cloudcover"] as double?,
+      visibility: json["visibility"] as double?,
+      solarradiation: json["solarradiation"] as double?,
+      solarenergy: json["solarenergy"] as double?,
+      uvindex: json["uvindex"] as double?,
+      severerisk: json["severerisk"] as double?,
+      sunrise: json["sunrise"] as double?,
+      sunset: json["sunset"] as double?,
+      sunriseEpoch: json["sunriseEpoch"] as double?,
+      moonphase: json["moonphase"] as double?,
+      conditions: json["conditions"] as String?,
+      description: json["description"] as String?,
+      icon: json["icon"] as String?,
+      stations:
+          (json["stations"] as List<Object?>).map((e) => e as String).toList(),
+      source: json["source"] as String?,
+      hours: (json["hours"] as List<Map<String, Object?>>)
+          .map((e) => Hour.fromJson(e))
+          .toList(),
+    );
+  }
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is Days &&
+      other is Day &&
           runtimeType == other.runtimeType &&
           datetime == other.datetime &&
           datetimeepoch == other.datetimeepoch &&

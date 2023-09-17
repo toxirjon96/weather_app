@@ -9,7 +9,7 @@ class Weather {
   String? timezone;
   double? tzoffset;
   String? description;
-  List<Days> days;
+  List<Day> days;
 
   Weather({
     required this.queryCost,
@@ -23,6 +23,21 @@ class Weather {
     required this.days,
   });
 
+  factory Weather.fromJson(Map<String, Object?> json) {
+    return Weather(
+      queryCost: json["queryCost"] as int?,
+      latitude: json["latitude"] as double?,
+      longitude: json["longitude"] as double?,
+      resolvedaddress: json["resolvedaddress"] as String?,
+      address: json["address"] as String?,
+      timezone: json["timezone"] as String?,
+      tzoffset: json["tzoffset"] as double?,
+      description: json["description"] as String?,
+      days: (json["days"] as List<Map<String, Object?>>)
+          .map((e) => Day.fromJson(e))
+          .toList(),
+    );
+  }
 
   @override
   bool operator ==(Object other) =>
