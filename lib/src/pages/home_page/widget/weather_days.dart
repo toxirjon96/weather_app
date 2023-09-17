@@ -1,7 +1,12 @@
 import 'package:weather_app/weather_app_library.dart';
 
 class WeatherDays extends StatefulWidget {
-  const WeatherDays({super.key});
+  const WeatherDays({
+    super.key,
+    required this.weather,
+  });
+
+  final Weather weather;
 
   @override
   State<StatefulWidget> createState() => _WeatherDaysState();
@@ -41,7 +46,9 @@ class _WeatherDaysState extends State<WeatherDays> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => const NextDaysPage(),
+                builder: (context) => NextDaysPage(
+                  weather: widget.weather,
+                ),
               ),
             );
           },

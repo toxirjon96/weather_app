@@ -14,7 +14,6 @@ class WeatherSlider extends StatelessWidget {
   bool isEqualTime(int timeEpoch) {
     DateTime now = DateTime.now();
     DateTime value = DateTime.fromMillisecondsSinceEpoch(timeEpoch * 1000);
-    print("${DateFormat.H().format(now)} --- ${DateFormat.H().format(value)} ${now}");
     return DateFormat.H().format(now).trim() ==
         DateFormat.H().format(value).trim();
   }
@@ -36,7 +35,6 @@ class WeatherSlider extends StatelessWidget {
           children: [
             ...weather.days[0].hours.map(
               (e) {
-                print(e.datetimeEpoch);
                 if (!isEqualTime(e.datetimeEpoch!)) {
                   return SliderItem(
                     time: weather.dateTimeFormat(

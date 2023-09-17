@@ -7,7 +7,6 @@ class ExpandedHomeBody extends StatelessWidget {
     super.key,
     required this.weather,
   });
-  
 
   @override
   Widget build(BuildContext context) {
@@ -40,8 +39,10 @@ class ExpandedHomeBody extends StatelessWidget {
             weather: weather,
           ),
         ),
-        const Expanded(
-          child: WeatherDays(),
+        Expanded(
+          child: WeatherDays(
+            weather: weather,
+          ),
         ),
         Divider(
           color: Colors.black.withOpacity(0.5),

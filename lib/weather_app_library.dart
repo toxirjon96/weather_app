@@ -41,3 +41,4 @@ export 'package:weather_app/src/pages/next_days_page/widget/next_page_appbar.dar
 export 'package:weather_app/src/pages/next_days_page/widget/top_container.dart';
 export 'package:weather_app/src/pages/next_days_page/next_days_page.dart';
 export 'package:weather_app/src/pages/next_days_page/widget/row_item.dart';
+export 'package:weather_app/src/pages/next_days_page/widget/container_item.dart';

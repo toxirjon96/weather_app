@@ -1,7 +1,12 @@
 import 'package:weather_app/weather_app_library.dart';
 
-class NextDaysPage extends StatelessWidget{
-  const NextDaysPage({super.key});
+class NextDaysPage extends StatelessWidget {
+  const NextDaysPage({
+    super.key,
+    required this.weather,
+  });
+
+  final Weather weather;
 
   @override
   Widget build(BuildContext context) {
@@ -19,10 +24,11 @@ class NextDaysPage extends StatelessWidget{
               ],
             ),
           ),
-          child: const ExpandedNextPageBody(),
+          child: ExpandedNextPageBody(
+            weather: weather,
+          ),
         ),
       ),
     );
   }
-
 }

@@ -1,7 +1,12 @@
 import 'package:weather_app/weather_app_library.dart';
 
 class TopContainer extends StatelessWidget {
-  const TopContainer({super.key});
+  const TopContainer({
+    super.key,
+    required this.weather,
+  });
+
+  final Weather weather;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +22,7 @@ class TopContainer extends StatelessWidget {
           Expanded(
             child: RowItem(
               dayName: "Tomorrow",
-              celsius: "22 °",
+              celsius: "${weather.celsiusValue(weather.days[1].temp!)} °",
               image: Image.asset(
                 "assets/images/sunny.png",
                 width: 100,
@@ -34,19 +39,19 @@ class TopContainer extends StatelessWidget {
                 Expanded(
                   child: ColumnItem(
                     image: Image.asset("assets/images/rain_fall.png"),
-                    info: "1cm",
+                    info: "${weather.days[1].precipprob!.toInt()}cm",
                   ),
                 ),
                 Expanded(
                   child: ColumnItem(
                     image: Image.asset("assets/images/wind.png"),
-                    info: "15km/h",
+                    info: "${weather.days[1].windspeed}km/h",
                   ),
                 ),
                 Expanded(
                   child: ColumnItem(
                     image: Image.asset("assets/images/humidity.png"),
-                    info: "50%",
+                    info: "${weather.days[1].humidity}%",
                   ),
                 ),
               ],
@@ -97,6 +102,7 @@ class ColumnItem extends StatelessWidget {
                 style: const TextStyle(
                   fontWeight: FontWeight.w400,
                   fontSize: 18,
+                  overflow: TextOverflow.ellipsis,
                 ),
               ),
             ),
