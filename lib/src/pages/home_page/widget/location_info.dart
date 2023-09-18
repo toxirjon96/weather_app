@@ -19,7 +19,7 @@ class LocationInfo extends StatelessWidget {
           "${weather.resolvedAddress}",
           style: const TextStyle(
             color: Color(0xFF303345),
-            fontSize: 35,
+            fontSize: 32,
             fontWeight: FontWeight.bold,
           ),
         ),

@@ -94,7 +94,7 @@ class SliderItem extends StatelessWidget {
             width: 60,
             fit: BoxFit.cover,
           ),
-          Text("${celsius}°"),
+          Text("$celsius °"),
         ],
       ),
     );

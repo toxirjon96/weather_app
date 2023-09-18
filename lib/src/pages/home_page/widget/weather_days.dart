@@ -25,7 +25,7 @@ class _WeatherDaysState extends State<WeatherDays> {
             style: TextStyle(
               fontWeight: FontWeight.bold,
               color: Colors.black,
-              fontSize: 18,
+              fontSize: 16,
             ),
           ),
         ),
@@ -36,7 +36,7 @@ class _WeatherDaysState extends State<WeatherDays> {
             style: TextStyle(
               fontWeight: FontWeight.w500,
               color: Colors.black.withOpacity(0.2),
-              fontSize: 18,
+              fontSize: 16,
             ),
           ),
         ),
@@ -57,7 +57,7 @@ class _WeatherDaysState extends State<WeatherDays> {
             style: TextStyle(
               fontWeight: FontWeight.w500,
               color: Colors.black.withOpacity(0.2),
-              fontSize: 18,
+              fontSize: 16,
             ),
           ),
         ),

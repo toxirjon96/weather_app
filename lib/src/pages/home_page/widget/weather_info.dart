@@ -16,7 +16,7 @@ class WeatherInfo extends StatelessWidget {
         InfoItem(
           image: Image.asset(
             "assets/images/rain_fall.png",
-            width: 50,
+            width: 45,
           ),
           infoName: "Rain Fall",
           infoValue: "${weather.currentConditions.precipprob!.toInt()}cm",
@@ -24,7 +24,7 @@ class WeatherInfo extends StatelessWidget {
         InfoItem(
           image: Image.asset(
             "assets/images/wind.png",
-            width: 50,
+            width: 45,
           ),
           infoName: "Wind",
           infoValue: "${weather.currentConditions.windspeed}km/h",
@@ -32,7 +32,7 @@ class WeatherInfo extends StatelessWidget {
         InfoItem(
           image: Image.asset(
             "assets/images/humidity.png",
-            width: 50,
+            width: 45,
           ),
           infoName: "Humidity",
           infoValue: "${weather.currentConditions.humidity}%",

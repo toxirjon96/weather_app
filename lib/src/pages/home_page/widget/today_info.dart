@@ -26,7 +26,7 @@ class TodayInfo extends StatelessWidget {
                   celsiusValue,
                   style: const TextStyle(
                     color: Color(0xFF303345),
-                    fontSize: 100,
+                    fontSize: 80,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
