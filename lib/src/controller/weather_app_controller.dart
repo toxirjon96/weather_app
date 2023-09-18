@@ -28,10 +28,6 @@ class WeatherAppController<T> {
     } on HttpRequestException {
       rethrow;
     } catch (e, st) {
-      print("-----------------------");
-      print(e);
-      print("-----------------------");
-      print(st);
       throw const HttpUrlException("This is not valid url.");
     }
   }

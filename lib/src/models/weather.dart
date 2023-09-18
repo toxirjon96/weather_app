@@ -36,13 +36,14 @@ class Weather {
     );
   }
 
-  String imageName(String conditions){
+  String imageName(String icon){
+    print(icon);
     String result = "sunny.png";
-    switch(conditions){
+    switch(icon){
       case 'clear-day': result = 'sunny.png';
       case 'rain': result = 'rainy.png';
-      case 'snow': result = 'cloud.png';
-      case 'cloudy' || 'partial_cloud-night' || 'clear-night':result = 'cloud.png';
+      case 'snow': result = 'cloudy.png';
+      case 'cloudy' || 'partial_cloud-night' || 'clear-night':result = 'cloudy.png';
       case 'partially-cloudy-day': result = 'sunny_with_partial_cloud.png';
     }
 

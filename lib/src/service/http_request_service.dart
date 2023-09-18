@@ -69,7 +69,6 @@ class HttpRequestService implements HttpRequestRepository {
   @override
   Map<String, Object?> jsonToMap(String requestBody) {
     try {
-      print(jsonDecode(requestBody).runtimeType);
       return jsonDecode(requestBody);
     } catch (e) {
       throw const JsonDecodeException("This is not valid format of json.");
