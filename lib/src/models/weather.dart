@@ -36,6 +36,19 @@ class Weather {
     );
   }
 
+  String imageName(String conditions){
+    String result = "sunny.png";
+    switch(conditions){
+      case 'clear-day': result = 'sunny.png';
+      case 'rain': result = 'rainy.png';
+      case 'snow': result = 'cloud.png';
+      case 'cloudy' || 'partial_cloud-night' || 'clear-night':result = 'cloud.png';
+      case 'partially-cloudy-day': result = 'sunny_with_partial_cloud.png';
+    }
+
+    return result;
+  }
+
   static Weather Function(Map<String, Object?> json) convert() =>
       (Map<String, Object?> json) {
         return Weather.fromJson(json);

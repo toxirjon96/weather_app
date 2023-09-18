@@ -35,7 +35,7 @@ class ExpandedNextPageBody extends StatelessWidget {
                                 DateFormat('EEEE'), e.datetimeEpoch),
                             celsius: "${weather.celsiusValue(e.temp!)} °",
                             image: Image.asset(
-                              "assets/images/sunny.png",
+                              "assets/images/${weather.imageName(e.icon!)}",
                               fit: BoxFit.cover,
                               width: 90,
                             ),

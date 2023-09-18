@@ -40,12 +40,14 @@ class WeatherSlider extends StatelessWidget {
                     time: weather.dateTimeFormat(
                         DateFormat.Hm(), e.datetimeEpoch),
                     celsius: weather.celsiusValue(e.temp!),
+                    imageName: weather.imageName(e.icon!),
                   );
                 } else {
                   return SliderItem(
                     time: "now",
                     celsius: weather.celsiusValue(e.temp!),
                     color: const Color(0xFFFFEAD9),
+                    imageName: weather.imageName(e.icon!),
                   );
                 }
               },
@@ -62,12 +64,14 @@ class SliderItem extends StatelessWidget {
     super.key,
     required this.time,
     required this.celsius,
+    required this.imageName,
     this.color = const Color(0xFFFECFA9),
   });
 
   final Color color;
   final String time;
   final String celsius;
+  final String imageName;
 
   @override
   Widget build(BuildContext context) {
@@ -86,7 +90,7 @@ class SliderItem extends StatelessWidget {
         children: [
           Text(time),
           Image.asset(
-            "assets/images/sunny.png",
+            "assets/images/$imageName",
             width: 60,
             fit: BoxFit.cover,
           ),

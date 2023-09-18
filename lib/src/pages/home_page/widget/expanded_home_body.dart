@@ -26,7 +26,7 @@ class ExpandedHomeBody extends StatelessWidget {
           flex: 4,
           child: TodayInfo(
             image: Image.asset(
-              "assets/images/rainy_with_sun.png",
+              "assets/images/${weather.imageName(weather.currentConditions.icon!)}",
               height: 400,
             ),
             celsiusValue: weather.celsiusValue(weather.currentConditions.temp!),
