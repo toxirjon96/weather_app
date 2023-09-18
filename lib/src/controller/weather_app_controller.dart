@@ -27,7 +27,7 @@ class WeatherAppController<T> {
       rethrow;
     } on HttpRequestException {
       rethrow;
-    } catch (e, st) {
+    } catch (e) {
       throw const HttpUrlException("This is not valid url.");
     }
   }
