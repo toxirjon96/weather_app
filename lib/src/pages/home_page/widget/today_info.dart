@@ -26,7 +26,7 @@ class TodayInfo extends StatelessWidget {
                   celsiusValue,
                   style: const TextStyle(
                     color: Color(0xFF303345),
-                    fontSize: 80,
+                    fontSize: 70,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -34,7 +34,7 @@ class TodayInfo extends StatelessWidget {
                   weather,
                   style: const TextStyle(
                     color: Color(0xFF303345),
-                    fontSize: 24,
+                    fontSize: 20,
                     fontWeight: FontWeight.w500,
                     overflow: TextOverflow.ellipsis,
                   ),
