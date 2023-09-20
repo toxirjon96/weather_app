@@ -3,12 +3,23 @@ library weather_app_library;
 //core
 export 'package:flutter/material.dart';
 export 'dart:convert';
+export 'package:dio/dio.dart';
 
 //model
-export 'package:weather_app/src/models/day.dart';
-export 'package:weather_app/src/models/hour.dart';
-export 'package:weather_app/src/models/weather.dart';
-export 'package:weather_app/src/models/current_conditions.dart';
+//weather
+export 'package:weather_app/src/models/weather/day.dart';
+export 'package:weather_app/src/models/weather/hour.dart';
+export 'package:weather_app/src/models/weather/weather.dart';
+export 'package:weather_app/src/models/weather/current_conditions.dart';
+
+//geo
+export 'package:weather_app/src/models/geo/currency.dart';
+export 'package:weather_app/src/models/geo/time_zone.dart';
+export 'package:weather_app/src/models/geo/geo_model.dart';
+
+//constants
+export 'package:weather_app/src/constants/api_config.dart';
+export 'package:weather_app/src/constants/api_constants.dart';
 
 //repository
 export 'package:weather_app/src/repository/http_request_repository.dart';
