@@ -8,7 +8,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   late final MainController controller;
 
   @override
@@ -40,10 +39,39 @@ class _HomePageState extends State<HomePage> {
             future: controller.getWeatherData(),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.done) {
-                snapshot.data;
-                return const Center();
+                if (controller.weather == null) {
+                  // showDialog(
+                  //   context: context,
+                  //   builder: (ctx) => AlertDialog(
+                  //     title: const Text("Exception"),
+                  //     content: Text(controller.errorMessage),
+                  //     actions: [
+                  //       TextButton(
+                  //         onPressed: () {},
+                  //         child: const Text("Okay"),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // );
+                  return Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(controller.errorMessage),
+                        IconButton(
+                          onPressed: () {},
+                          icon: const Icon(Icons.refresh),
+                        ),
+                      ],
+                    ),
+                  );
+                } else {
+                  return ExpandedHomeBody(weather: controller.weather!);
+                }
               } else {
-                return const Center(child: CircularProgressIndicator(),);
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
               }
             },
           ),
@@ -52,4 +80,3 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-
