@@ -3,5 +3,5 @@ abstract class ApiConfig{
   static const weatherKey = 'HX4CGDZRV4UEJURH9Z2ZQ4FUJ';
 
   static const geoBaseUrl = 'https://ipgeolocation.io';
-  static const geoKey = 'fb470e285c7c4c248760005c73b3f1fe';
+  static const geoApiKey = 'fb470e285c7c4c248760005c73b3f1fe';
 }

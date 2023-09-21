@@ -11,13 +11,9 @@ abstract class ApiConstants {
         "key": apiKey,
         "contentType": "json",
       };
-
   static const geoPath = '/ipgeo';
 
-  static Map<String, String> geoParams(
-    String apiKey,
-  ) =>
-      {
+  static Map<String, String> geoParams(String apiKey) => {
         "apiKey": apiKey,
       };
 }

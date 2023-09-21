@@ -8,56 +8,20 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  Weather? weather;
-  Widget? activeScreen;
-  String stateOfApp = "Loading...";
 
-  final WeatherAppController<Weather> weatherAppController =
-      WeatherAppController(
-    convert: Weather.convert(),
-    requestRepository: HttpRequestService(),
-  );
+  late final MainController controller;
 
   @override
   void initState() {
     super.initState();
-    makeRequest();
-  }
-
-  void makeRequest() async {
-    try {
-      Weather w = await weatherAppController.get(
-          "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Toshkent?unitGroup=us&key=HX4CGDZRV4UEJURH9Z2ZQ4FUJ&contentType=json");
-
-      setState(() {
-        weather = w;
-      });
-    } on JsonDecodeException catch (e) {
-      setState(() {
-        stateOfApp = e.message;
-      });
-    } on HttpUrlException catch (e) {
-      setState(() {
-        stateOfApp = e.message;
-      });
-    } on HttpRequestException catch (e) {
-      setState(() {
-        stateOfApp = e.message;
-      });
-    } on HttpStatusCodeException catch (e) {
-      setState(() {
-        stateOfApp = e.message;
-      });
-    }
+    controller = MainController(
+      geoRepository: GeoRepository(),
+      weatherRepository: WeatherRepository(),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    if (weather != null) {
-      activeScreen = ExpandedHomeBody(weather: weather!);
-    } else {
-      activeScreen = Loading(stateOfApp: stateOfApp);
-    }
     return SafeArea(
       child: Scaffold(
         body: Container(
@@ -72,31 +36,20 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           ),
-          child: activeScreen,
+          child: FutureBuilder(
+            future: controller.getWeatherData(),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.done) {
+                snapshot.data;
+                return const Center();
+              } else {
+                return const Center(child: CircularProgressIndicator(),);
+              }
+            },
+          ),
         ),
       ),
     );
   }
 }
 
-class Loading extends StatelessWidget {
-  const Loading({
-    super.key,
-    required this.stateOfApp,
-  });
-
-  final String stateOfApp;
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        stateOfApp,
-        style: const TextStyle(
-          fontWeight: FontWeight.w500,
-          fontSize: 20,
-        ),
-      ),
-    );
-  }
-}

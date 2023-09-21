@@ -6,13 +6,11 @@ export 'dart:convert';
 export 'package:dio/dio.dart';
 
 //model
-//weather
 export 'package:weather_app/src/models/weather/day.dart';
 export 'package:weather_app/src/models/weather/hour.dart';
 export 'package:weather_app/src/models/weather/weather.dart';
 export 'package:weather_app/src/models/weather/current_conditions.dart';
 
-//geo
 export 'package:weather_app/src/models/geo/currency.dart';
 export 'package:weather_app/src/models/geo/time_zone.dart';
 export 'package:weather_app/src/models/geo/geo_model.dart';
@@ -22,19 +20,24 @@ export 'package:weather_app/src/constants/api_config.dart';
 export 'package:weather_app/src/constants/api_constants.dart';
 
 //repository
-export 'package:weather_app/src/repository/http_request_repository.dart';
+export 'package:weather_app/src/repository/geo_repository.dart';
+export 'package:weather_app/src/repository/weather_repository.dart';
 
 //service
-export 'package:weather_app/src/service/http_request_service.dart';
+export 'package:weather_app/src/service/api_service.dart';
+export 'package:weather_app/src/service/wrapper/i_service_wrapper.dart';
 
 //controller
-export 'package:weather_app/src/controller/weather_app_controller.dart';
+export 'package:weather_app/src/controller/main_controller.dart';
 
 //exception
 export 'package:weather_app/src/exception/http_request_ecxeption.dart';
 export 'package:weather_app/src/exception/http_statuscode_exception.dart';
 export 'package:weather_app/src/exception/http_url_exception.dart';
 export 'package:weather_app/src/exception/json_decode_exception.dart';
+export 'package:weather_app/src/exception/unknown_exception.dart';
+export 'package:weather_app/src/exception/client_exception.dart';
+export 'package:weather_app/src/exception/server_exception.dart';
 
 //home_page
 export 'package:weather_app/src/pages/home_page/home_page.dart';
