@@ -131,7 +131,7 @@ class Day {
         if (e is Map<String, Object?>) {
           return Hour.convert()(e);
         } else {
-          throw const HttpRequestException("Request exception.");
+          throw const UnknownException("Request exception.", 101);
         }
       }).toList(),
     );

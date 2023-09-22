@@ -31,10 +31,6 @@ export 'package:weather_app/src/service/wrapper/i_service_wrapper.dart';
 export 'package:weather_app/src/controller/main_controller.dart';
 
 //exception
-export 'package:weather_app/src/exception/http_request_ecxeption.dart';
-export 'package:weather_app/src/exception/http_statuscode_exception.dart';
-export 'package:weather_app/src/exception/http_url_exception.dart';
-export 'package:weather_app/src/exception/json_decode_exception.dart';
 export 'package:weather_app/src/exception/unknown_exception.dart';
 export 'package:weather_app/src/exception/client_exception.dart';
 export 'package:weather_app/src/exception/server_exception.dart';

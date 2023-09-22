@@ -37,7 +37,6 @@ class Weather {
   }
 
   String imageName(String icon){
-    print(icon);
     String result = "sunny.png";
     switch(icon){
       case 'clear-day': result = 'sunny.png';
@@ -69,7 +68,7 @@ class Weather {
         if (e is Map<String, Object?>) {
           return Day.convert()(e);
         } else {
-          throw const HttpRequestException("Request exception.");
+          throw const UnknownException("Request exception.", 101);
         }
       }).toList(),
       currentConditions: CurrentConditions.fromJson(
